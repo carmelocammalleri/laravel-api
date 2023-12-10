@@ -12,4 +12,9 @@ class PageController extends Controller
         $projects = Project::with('type')->paginate(10);
         return response()->json($projects);
     }
+
+    public function getProjectBySlug($slug){
+        $project = Project::where('slug', $slug)->first();
+        return response()->json($project);
+    }
 }
